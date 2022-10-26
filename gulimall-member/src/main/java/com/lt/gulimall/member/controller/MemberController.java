@@ -4,12 +4,11 @@ import java.util.Arrays;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
+import com.lt.gulimall.member.feign.CouponFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.web.bind.annotation.*;
 
 import com.lt.gulimall.member.entity.MemberEntity;
 import com.lt.gulimall.member.service.MemberService;
@@ -27,9 +26,28 @@ import com.lt.gulimall.common.utils.R;
  */
 @RestController
 @RequestMapping("member/member")
+@RefreshScope
 public class MemberController {
     @Autowired
     private MemberService memberService;
+
+    @Autowired
+    private CouponFeignService couponFeignService;
+
+    @GetMapping("/getMemberCoupons")
+    public R getMemberCoupons(){
+        R r = couponFeignService.memberCoupons();
+        return r.put("用户:","张三");
+    }
+
+    @Value("${member.user.name}")
+    private String name;
+    @Value("${member.user.age}")
+    private Integer age;
+    @GetMapping("/test")
+    public R test(){
+        return R.ok().put(name,age);
+    }
 
     /**
      * 列表

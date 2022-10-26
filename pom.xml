@@ -27,6 +27,7 @@
         <druid.version>1.1.13</druid.version>
         <httpcore.version>4.4.15</httpcore.version>
         <mysql.version>8.0.28</mysql.version>
+        <alibaba.cloud.version>2.2.6.RELEASE</alibaba.cloud.version>
     </properties>
 
     <parent>
@@ -132,6 +133,13 @@
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpcore</artifactId>
                 <version>${httpcore.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${alibaba.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
 
