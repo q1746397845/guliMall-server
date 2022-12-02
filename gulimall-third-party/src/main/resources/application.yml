@@ -1,13 +1,7 @@
 server:
   port: 8006
 
-alibaba:
-  cloud:
-    access-key: LTAI5tNG4WQHxyhSRTENpzgZ
-    secret-key: T4EweDGAt64GHUrimyQ6ifvd2bNVUj
-    oss:
-      endpoint: oss-cn-beijing.aliyuncs.com
-      bucket: ggulimall-lt
+
 
 spring:
   application:
