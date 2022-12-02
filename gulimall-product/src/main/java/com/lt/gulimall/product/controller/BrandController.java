@@ -1,10 +1,17 @@
 package com.lt.gulimall.product.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
+import com.lt.gulimall.common.validator.group.AddGroup;
+import com.lt.gulimall.common.validator.group.UpdateGroup;
+import com.lt.gulimall.common.validator.group.UpdateStatusGroup;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +23,7 @@ import com.lt.gulimall.product.service.BrandService;
 import com.lt.gulimall.common.utils.PageUtils;
 import com.lt.gulimall.common.utils.R;
 
+import javax.validation.Valid;
 
 
 /**
@@ -30,6 +38,8 @@ import com.lt.gulimall.common.utils.R;
 public class BrandController {
     @Autowired
     private BrandService brandService;
+    private ObjectError fieldError;
+
 
     /**
      * 列表
@@ -59,10 +69,10 @@ public class BrandController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("product:brand:save")
-    public R save(@RequestBody BrandEntity brand){
-		brandService.save(brand);
-
+    public R save(@Validated({AddGroup.class}) @RequestBody BrandEntity brand){
+        brandService.save(brand);
         return R.ok();
+
     }
 
     /**
@@ -70,9 +80,21 @@ public class BrandController {
      */
     @RequestMapping("/update")
     //@RequiresPermissions("product:brand:update")
-    public R update(@RequestBody BrandEntity brand){
-		brandService.updateById(brand);
+    public R update(@Validated({UpdateGroup.class})  @RequestBody BrandEntity brand){
+		brandService.updateDetail(brand);
+        return R.ok();
+    }
 
+    /**
+     * 修改
+     */
+    @RequestMapping("/updateStatus")
+    //@RequiresPermissions("product:brand:update")
+    public R updateStatus(@Validated({UpdateStatusGroup.class})  @RequestBody BrandEntity brand){
+        BrandEntity brandEntity = new BrandEntity();
+        brandEntity.setBrandId(brand.getBrandId());
+        brandEntity.setShowStatus(brand.getShowStatus());
+        brandService.updateById(brandEntity);
         return R.ok();
     }
 

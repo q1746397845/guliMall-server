@@ -1,0 +1,19 @@
+server:
+  port: 8007
+
+
+spring:
+  application:
+    name: gulimall-search
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+
+
+
+# 日志配置
+logging:
+  level:
+    com.lt.gulimall: debug
+    org.springframework: warn

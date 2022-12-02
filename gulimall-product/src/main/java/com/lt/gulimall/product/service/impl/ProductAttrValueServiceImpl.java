@@ -1,6 +1,8 @@
 package com.lt.gulimall.product.service.impl;
 
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -24,6 +26,24 @@ public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueDao
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public List<ProductAttrValueEntity> getBaseAttrList(Long supId) {
+        QueryWrapper<ProductAttrValueEntity> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("spu_id",supId);
+        List<ProductAttrValueEntity> list = this.list(queryWrapper);
+        return list;
+    }
+
+
+    @Override
+    public void updateBaseAttr(Long spuId, List<ProductAttrValueEntity> productAttrValueEntities) {
+        this.remove(new QueryWrapper<ProductAttrValueEntity>().eq("spu_id",spuId));
+        productAttrValueEntities.forEach(item ->{
+            item.setSpuId(spuId);
+        });
+        this.saveBatch(productAttrValueEntities);
     }
 
 }

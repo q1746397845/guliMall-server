@@ -1,15 +1,19 @@
 package com.lt.gulimall.product.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 /**
  * 属性分组
- * 
+ *
  * @author lt
  * @email 1746397845@qq.com
  * @date 2022-10-26 10:27:47
@@ -44,5 +48,8 @@ public class AttrGroupEntity implements Serializable {
 	 * 所属分类id
 	 */
 	private Long catelogId;
+
+	@TableField(exist = false)
+	private List<Long> catelogIdPath;
 
 }

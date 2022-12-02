@@ -62,3 +62,9 @@ mybatis-plus:
     call-setters-on-nulls: true
     jdbc-type-for-null: 'null'
 
+# 日志配置
+logging:
+  level:
+    com.lt.gulimall: debug
+    org.springframework: warn
+
