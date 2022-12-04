@@ -1,11 +1,15 @@
 package com.lt.gulimall.ware.service.impl;
 
+import com.lt.gulimall.common.to.SkuHasStockTo;
+import com.lt.gulimall.common.to.SkuReductionTo;
 import com.lt.gulimall.common.utils.R;
 import com.lt.gulimall.ware.feign.ProductFeignService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -26,6 +30,9 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
 
     @Resource
     private ProductFeignService productFeignService;
+
+    @Resource
+    private WareSkuDao wareSkuDao;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -71,5 +78,17 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
             one.setStock(one.getStock() + skuNum);
             this.updateById(one);
         }
+    }
+
+    @Override
+    public List<SkuHasStockTo> getSkuStock(List<Long> skuIds) {
+        List<WareSkuEntity> list = wareSkuDao.selectSkuStockBySkuIds(skuIds);
+        List<SkuHasStockTo> collect = list.stream().map(item -> {
+            SkuHasStockTo skuHasStockTo = new SkuHasStockTo();
+            skuHasStockTo.setSkuId(item.getSkuId());
+            skuHasStockTo.setStock(item.getStock());
+            return skuHasStockTo;
+        }).collect(Collectors.toList());
+        return collect;
     }
 }

@@ -1,15 +1,13 @@
 package com.lt.gulimall.ware.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
+import com.lt.gulimall.common.to.SkuHasStockTo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.lt.gulimall.ware.entity.WareSkuEntity;
 import com.lt.gulimall.ware.service.WareSkuService;
@@ -30,6 +28,16 @@ import com.lt.gulimall.common.utils.R;
 public class WareSkuController {
     @Autowired
     private WareSkuService wareSkuService;
+
+    /**
+     * 获取sku库存
+     * @return
+     */
+    @PostMapping("/getSkuStock")
+    public R getSkuStock(@RequestBody List<Long> skuIds){
+        List<SkuHasStockTo> list = wareSkuService.getSkuStock(skuIds);
+        return R.ok(list);
+    }
 
     /**
      * 列表

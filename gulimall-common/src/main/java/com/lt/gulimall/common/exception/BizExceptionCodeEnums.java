@@ -4,6 +4,7 @@ public enum BizExceptionCodeEnums {
 
     UNKNOWN_EXCEPTION("未知异常",10000),
     VALID_EXCEPTION("参数格式校验失败",10001),
+    PRODUCT_UP_EXCEPTION("商品上架异常",11000);
     ;
 
     private String message;

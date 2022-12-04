@@ -13,5 +13,11 @@
         <result property="stockLocked" column="stock_locked"/>
     </resultMap>
 
+    <select id="selectSkuStockBySkuIds" resultMap="wareSkuMap">
+        select sku_id,sum(stock - stock_locked)as stock  from wms_ware_sku
+        where sku_id in <foreach collection="skuIds" item="item" index="index" separator="," open="(" close=")">#{item}</foreach>
+        group by sku_id
+    </select>
+
 
 </mapper>

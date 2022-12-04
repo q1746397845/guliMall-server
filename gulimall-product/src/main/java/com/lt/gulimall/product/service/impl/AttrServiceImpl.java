@@ -43,6 +43,9 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
     @Resource
     private AttrGroupService attrGroupService;
 
+    @Resource
+    private AttrDao attrDao;
+
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<AttrEntity> page = this.page(
@@ -197,6 +200,8 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         return new PageUtils(page);
     }
 
-
-
+    @Override
+    public List<Long> selectSearchAttrs(List<Long> attrIds) {
+        return attrDao.selectSearchAttrs(attrIds);
+    }
 }
