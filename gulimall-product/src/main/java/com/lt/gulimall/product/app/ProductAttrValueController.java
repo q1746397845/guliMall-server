@@ -1,4 +1,4 @@
-package com.lt.gulimall.product.controller;
+package com.lt.gulimall.product.app;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lt.gulimall.product.entity.SkuSaleAttrValueEntity;
-import com.lt.gulimall.product.service.SkuSaleAttrValueService;
+import com.lt.gulimall.product.entity.ProductAttrValueEntity;
+import com.lt.gulimall.product.service.ProductAttrValueService;
 import com.lt.gulimall.common.utils.PageUtils;
 import com.lt.gulimall.common.utils.R;
 
 
 
 /**
- * sku销售属性&值
+ * spu属性值
  *
  * @author lt
  * @email 1746397845@qq.com
  * @date 2022-10-26 10:27:47
  */
 @RestController
-@RequestMapping("product/skusaleattrvalue")
-public class SkuSaleAttrValueController {
+@RequestMapping("product/productattrvalue")
+public class ProductAttrValueController {
     @Autowired
-    private SkuSaleAttrValueService skuSaleAttrValueService;
+    private ProductAttrValueService productAttrValueService;
 
     /**
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("product:skusaleattrvalue:list")
+    //@RequiresPermissions("product:productattrvalue:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = skuSaleAttrValueService.queryPage(params);
+        PageUtils page = productAttrValueService.queryPage(params);
 
         return R.ok().put("page", page);
     }
@@ -47,20 +47,20 @@ public class SkuSaleAttrValueController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("product:skusaleattrvalue:info")
+    //@RequiresPermissions("product:productattrvalue:info")
     public R info(@PathVariable("id") Long id){
-		SkuSaleAttrValueEntity skuSaleAttrValue = skuSaleAttrValueService.getById(id);
+		ProductAttrValueEntity productAttrValue = productAttrValueService.getById(id);
 
-        return R.ok().put("skuSaleAttrValue", skuSaleAttrValue);
+        return R.ok().put("productAttrValue", productAttrValue);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("product:skusaleattrvalue:save")
-    public R save(@RequestBody SkuSaleAttrValueEntity skuSaleAttrValue){
-		skuSaleAttrValueService.save(skuSaleAttrValue);
+    //@RequiresPermissions("product:productattrvalue:save")
+    public R save(@RequestBody ProductAttrValueEntity productAttrValue){
+		productAttrValueService.save(productAttrValue);
 
         return R.ok();
     }
@@ -69,9 +69,9 @@ public class SkuSaleAttrValueController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("product:skusaleattrvalue:update")
-    public R update(@RequestBody SkuSaleAttrValueEntity skuSaleAttrValue){
-		skuSaleAttrValueService.updateById(skuSaleAttrValue);
+    //@RequiresPermissions("product:productattrvalue:update")
+    public R update(@RequestBody ProductAttrValueEntity productAttrValue){
+		productAttrValueService.updateById(productAttrValue);
 
         return R.ok();
     }
@@ -80,9 +80,9 @@ public class SkuSaleAttrValueController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("product:skusaleattrvalue:delete")
+    //@RequiresPermissions("product:productattrvalue:delete")
     public R delete(@RequestBody Long[] ids){
-		skuSaleAttrValueService.removeByIds(Arrays.asList(ids));
+		productAttrValueService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

@@ -1,7 +1,6 @@
-package com.lt.gulimall.product.controller;
+package com.lt.gulimall.product.app;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -9,7 +8,6 @@ import com.lt.gulimall.common.validator.group.AddGroup;
 import com.lt.gulimall.common.validator.group.UpdateGroup;
 import com.lt.gulimall.common.validator.group.UpdateStatusGroup;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,8 +20,6 @@ import com.lt.gulimall.product.entity.BrandEntity;
 import com.lt.gulimall.product.service.BrandService;
 import com.lt.gulimall.common.utils.PageUtils;
 import com.lt.gulimall.common.utils.R;
-
-import javax.validation.Valid;
 
 
 /**

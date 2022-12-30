@@ -42,6 +42,28 @@ spring:
           config:
             multi-statement-allow: true
 
+  thymeleaf:
+    cache: true
+
+  redis:
+    host: 192.168.79.130
+    port: 6379
+
+  cache:
+    type: redis
+    redis:
+      #失效时间
+      time-to-live: 3600000
+      #前缀
+      key-prefix: CACHE_
+      #是否开启前缀
+      use-key-prefix: true
+      #是否缓存控制
+      cache-null-values: true
+
+#    cache-names:
+
+
 #mybatis
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml

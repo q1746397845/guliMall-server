@@ -1,12 +1,10 @@
-package com.lt.gulimall.product.controller;
+package com.lt.gulimall.product.app;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
-import com.lt.gulimall.product.dao.AttrAttrgroupRelationDao;
 import com.lt.gulimall.product.entity.AttrEntity;
 import com.lt.gulimall.product.service.AttrAttrgroupRelationService;
 import com.lt.gulimall.product.service.AttrService;

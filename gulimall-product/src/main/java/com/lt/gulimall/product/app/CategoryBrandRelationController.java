@@ -1,4 +1,4 @@
-package com.lt.gulimall.product.controller;
+package com.lt.gulimall.product.app;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,8 +7,6 @@ import java.util.stream.Collectors;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.lt.gulimall.product.service.BrandService;
-import com.lt.gulimall.product.service.CategoryService;
 import com.lt.gulimall.product.vo.BrandVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +15,6 @@ import com.lt.gulimall.product.entity.CategoryBrandRelationEntity;
 import com.lt.gulimall.product.service.CategoryBrandRelationService;
 import com.lt.gulimall.common.utils.PageUtils;
 import com.lt.gulimall.common.utils.R;
-
-import javax.annotation.Resource;
 
 
 /**

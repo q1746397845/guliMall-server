@@ -1,10 +1,9 @@
-package com.lt.gulimall.product.controller;
+package com.lt.gulimall.product.app;
 
 import java.util.Arrays;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
-import com.lt.gulimall.product.query.SpuQuery;
 import com.lt.gulimall.product.vo.SpuSaveVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
