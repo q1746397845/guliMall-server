@@ -1,4 +1,4 @@
-package com.ly.gulimall.search.service;
+package com.lt.gulimall.search.service;
 
 import com.lt.gulimall.common.to.es.SkuEsModel;
 import com.lt.gulimall.common.utils.R;

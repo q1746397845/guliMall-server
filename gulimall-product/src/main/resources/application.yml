@@ -6,7 +6,7 @@ spring:
     name: gulimall-product
   cloud:
     nacos:
-      config:
+      discovery:
         server-addr: 127.0.0.1:8848
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -43,7 +43,7 @@ spring:
             multi-statement-allow: true
 
   thymeleaf:
-    cache: true
+    cache: false
 
   redis:
     host: 192.168.79.130

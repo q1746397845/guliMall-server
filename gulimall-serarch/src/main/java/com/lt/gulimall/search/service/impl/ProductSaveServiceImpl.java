@@ -1,18 +1,15 @@
-package com.ly.gulimall.search.service.impl;
+package com.lt.gulimall.search.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lt.gulimall.common.constant.ESConstant;
 import com.lt.gulimall.common.to.es.SkuEsModel;
-import com.lt.gulimall.common.utils.R;
-import com.ly.gulimall.search.config.GulimallElasticSearchConfig;
-import com.ly.gulimall.search.service.ProductSaveService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.lt.gulimall.search.config.GulimallElasticSearchConfig;
+import com.lt.gulimall.search.service.ProductSaveService;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.common.xcontent.XContent;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.springframework.stereotype.Service;
 

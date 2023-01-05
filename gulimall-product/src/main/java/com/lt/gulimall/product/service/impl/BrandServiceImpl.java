@@ -3,6 +3,8 @@ package com.lt.gulimall.product.service.impl;
 import com.lt.gulimall.product.service.CategoryBrandRelationService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -46,5 +48,13 @@ public class BrandServiceImpl extends ServiceImpl<BrandDao, BrandEntity> impleme
             //修改关联表数据
             categoryBrandRelationService.updateBrandNameByBrandId(brand.getBrandId(),brand.getName());
         }
+    }
+
+    @Override
+    public List<BrandEntity> getInfoByIds(List<Long> brandIds) {
+        QueryWrapper<BrandEntity> queryWrapper = new QueryWrapper<>();
+        queryWrapper.in("brand_id",brandIds);
+        List<BrandEntity> list = this.list(queryWrapper);
+        return list;
     }
 }

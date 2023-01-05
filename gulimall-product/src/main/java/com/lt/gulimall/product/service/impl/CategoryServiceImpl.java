@@ -89,7 +89,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     }
 
     @Override
-    @Cacheable(value = {"category"},key = "#root.method.name")
+    @Cacheable(value = {"category"},key = "#root.method.name",sync = true)
     public List<CategoryEntity> getLevel1Category() {
         System.out.println("getLevel1Category......");
         List<CategoryEntity> parent_cid = this.list(new QueryWrapper<CategoryEntity>().eq("parent_cid", 0));
@@ -97,7 +97,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     }
 
     @Override
-    @Cacheable(value = {"category"},key = "#root.method.name")
+    @Cacheable(value = {"category"},key = "#root.method.name",sync = true)
     public Map<Long,List<Catalog2Vo>> getCatalogJson() {
         List<CategoryEntity> categoryEntities = baseMapper.selectList(null);
         List<CategoryEntity> level1Categorys = categoryEntities.stream()

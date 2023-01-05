@@ -51,6 +51,8 @@ public class SkuEsModel {
      */
     private Long catalogId;
 
+    private Long brandId;
+
     /**
      * 品牌名称
      */

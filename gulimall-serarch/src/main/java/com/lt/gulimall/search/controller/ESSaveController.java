@@ -1,15 +1,13 @@
-package com.ly.gulimall.search.controller;
+package com.lt.gulimall.search.controller;
 
 import com.lt.gulimall.common.exception.BizExceptionCodeEnums;
 import com.lt.gulimall.common.to.es.SkuEsModel;
 import com.lt.gulimall.common.utils.R;
-import com.ly.gulimall.search.service.ProductSaveService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.lt.gulimall.search.service.ProductSaveService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 

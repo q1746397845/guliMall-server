@@ -1,4 +1,4 @@
-package com.ly.gulimall.search.config;
+package com.lt.gulimall.search.config;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.HttpAsyncResponseConsumerFactory;

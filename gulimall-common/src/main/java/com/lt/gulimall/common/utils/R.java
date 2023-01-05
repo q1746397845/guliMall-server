@@ -87,6 +87,12 @@ public class R extends HashMap<String, Object> {
         T t = JSONObject.parseObject(s,typeReference);
         return t;
     }
+    public <T> T getData(String key,TypeReference<T> typeReference) {
+        Object data = get(key);
+        String s = JSONObject.toJSONString(data);
+        T t = JSONObject.parseObject(s,typeReference);
+        return t;
+    }
     public String getMsg() {
        return (String) this.get("msg");
     }
