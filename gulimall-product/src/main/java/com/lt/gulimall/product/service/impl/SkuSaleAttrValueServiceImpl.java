@@ -1,6 +1,9 @@
 package com.lt.gulimall.product.service.impl;
 
+import com.lt.gulimall.product.vo.SkuItemSaleAttrVo;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -12,9 +15,14 @@ import com.lt.gulimall.product.dao.SkuSaleAttrValueDao;
 import com.lt.gulimall.product.entity.SkuSaleAttrValueEntity;
 import com.lt.gulimall.product.service.SkuSaleAttrValueService;
 
+import javax.annotation.Resource;
+
 
 @Service("skuSaleAttrValueService")
 public class SkuSaleAttrValueServiceImpl extends ServiceImpl<SkuSaleAttrValueDao, SkuSaleAttrValueEntity> implements SkuSaleAttrValueService {
+
+    @Resource
+    private SkuSaleAttrValueDao skuSaleAttrValueDao;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -26,4 +34,8 @@ public class SkuSaleAttrValueServiceImpl extends ServiceImpl<SkuSaleAttrValueDao
         return new PageUtils(page);
     }
 
+    @Override
+    public List<SkuItemSaleAttrVo> getSaleAttrsBySpuId(Long spuId) {
+        return skuSaleAttrValueDao.getSaleAttrsBySpuId(spuId);
+    }
 }

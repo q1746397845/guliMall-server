@@ -6,6 +6,7 @@ import com.lt.gulimall.product.entity.AttrEntity;
 import com.lt.gulimall.product.entity.ProductAttrValueEntity;
 import com.lt.gulimall.product.vo.AttrResponseVo;
 import com.lt.gulimall.product.vo.AttrVo;
+import com.lt.gulimall.product.vo.SkuItemGroupAttrVo;
 
 import java.util.ArrayList;
 import java.util.List;

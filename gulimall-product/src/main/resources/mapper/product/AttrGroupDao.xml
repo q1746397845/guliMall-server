@@ -12,6 +12,21 @@
         <result property="icon" column="icon"/>
         <result property="catelogId" column="catelog_id"/>
     </resultMap>
+    <resultMap id="skuItemGroupAttrVo" type="com.lt.gulimall.product.vo.SkuItemGroupAttrVo">
+        <result property="groupName" column="attr_group_name"></result>
+        <collection property="attrs" ofType="com.lt.gulimall.product.vo.Attr" javaType="list">
+            <result property="attrValue" column="attr_value"></result>
+            <result property="attrName" column="attr_name"></result>
+            <result property="attrId" column="attr_id"></result>
+        </collection>
+    </resultMap>
+    <select id="getAttrGroupWithAttrsBySpuId" resultMap="skuItemGroupAttrVo">
+        select t3.attr_group_name ,t1.attr_name ,t1.attr_value ,t1.attr_id
+        from pms_product_attr_value t1
+        left join pms_attr_attrgroup_relation t2 on t1.attr_id = t2.attr_id
+        left join pms_attr_group t3 on t2.attr_group_id = t3.attr_group_id
+        where t1.spu_id = #{spuId}
+    </select>
 
 
 </mapper>

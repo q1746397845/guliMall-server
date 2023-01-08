@@ -179,7 +179,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
 
                 //6.3入库pms_sku_sale_attr_value 表
                 List<Attr> attrs = sku.getAttr();
-                if (CollectionUtils.isEmpty(attrs)) {
+                if (!CollectionUtils.isEmpty(attrs)) {
                     List<SkuSaleAttrValueEntity> skuSaleAttrValueEntities = attrs.stream().map(attr -> {
                         SkuSaleAttrValueEntity skuSaleAttrValueEntity = new SkuSaleAttrValueEntity();
                         skuSaleAttrValueEntity.setAttrId(attr.getAttrId());

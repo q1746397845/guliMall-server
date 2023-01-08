@@ -5,6 +5,7 @@ import com.lt.gulimall.product.entity.AttrEntity;
 import com.lt.gulimall.product.service.AttrService;
 import com.lt.gulimall.product.vo.AttrGroupWithAttrsVo;
 import com.lt.gulimall.product.vo.AttrVo;
+import com.lt.gulimall.product.vo.SkuItemGroupAttrVo;
 import org.apache.commons.lang.StringUtils;
 import org.bouncycastle.jcajce.provider.symmetric.ARC4;
 import org.springframework.beans.BeanUtils;
@@ -34,8 +35,11 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
     @Resource
     private AttrService attrService;
 
+    @Resource
+    private AttrGroupDao attrGroupDao;
+
     @Override
-    public List<AttrGroupWithAttrsVo> getAttrGroupWithAttrs(Long catelogId) {
+    public List<AttrGroupWithAttrsVo> getAttrGroupWithAttrsByCatelogId(Long catelogId) {
         //首先获取当前分类下的属性分组
         List<AttrGroupEntity> attrGroupEntities = this.list(new QueryWrapper<AttrGroupEntity>().eq("catelog_id", catelogId));
         return attrGroupEntities.stream().map(attrGroup ->{
@@ -73,5 +77,10 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
                 new Query<AttrGroupEntity>().getPage(params),queryWrapper
         );
         return new PageUtils(page);
+    }
+
+    @Override
+    public List<SkuItemGroupAttrVo> getAttrGroupWithAttrsBySpuId(Long spuId) {
+        return attrGroupDao.getAttrGroupWithAttrsBySpuId(spuId);
     }
 }
