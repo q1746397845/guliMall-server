@@ -19,6 +19,7 @@ public class GuliMallCorsConfiguration {
 
     @Bean
     public CorsWebFilter corsWebFilter(){
+
         UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.addAllowedHeader("*");
