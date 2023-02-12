@@ -10,3 +10,6 @@ spring:
     nacos:
       config:
         server-addr: 127.0.0.1:8848
+
+    sms:
+      appcode: 61ad6350e48146828c977afb5c5fc813

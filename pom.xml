@@ -60,6 +60,7 @@
         <module>gulimall-third-party</module>
         <module>gulimall-gateway</module>
         <module>gulimall-serarch</module>
+        <module>gulimall-auth-server</module>
     </modules>
 
     <dependencyManagement>

@@ -1,0 +1,19 @@
+server:
+  port: 8009
+
+spring:
+  application:
+    name: gulimall-auth-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+  thymeleaf:
+    cache: false
+
+
+logging:
+  level:
+    com.lt.gulimall: debug
+    org.springframework: warn
